@@ -2,7 +2,7 @@ import React from 'react';
 import './TaskList.css'; 
 import Task from './Task';
 
-function TaskList({ tasks, onToggleTask, onAddSubtask }) {
+function TaskList({ tasks, onToggleTask, onAddSubtask, onDeleteTask, onEditTask }) {
     return (
         <div className="task-list">
             <h2>Active Tasks</h2>
@@ -13,6 +13,8 @@ function TaskList({ tasks, onToggleTask, onAddSubtask }) {
                         task={task} 
                         onToggleTask={onToggleTask} 
                         onAddSubtask={onAddSubtask} 
+                        onDeleteTask={onDeleteTask} 
+                        onEditTask={onEditTask} 
                     />
                 ))}
             </ul>
@@ -24,6 +26,8 @@ function TaskList({ tasks, onToggleTask, onAddSubtask }) {
                         task={task} 
                         onToggleTask={onToggleTask} 
                         onAddSubtask={onAddSubtask} 
+                        onDeleteTask={onDeleteTask} 
+                        onEditTask={onEditTask} 
                     />
                 ))}
             </ul>
