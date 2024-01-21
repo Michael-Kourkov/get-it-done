@@ -24,3 +24,6 @@
     color: grey;
 }
 
+.task-list .completed {
+    background-color: #d4edda;
+}

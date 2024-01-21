@@ -9,11 +9,10 @@ import AddTask from './components/AddTask';
 function App() {
   const [tasks, setTasks] = useState([]);
 
-  const addTask = (text) => {
-    const newTask = { id: Date.now(), text, completed: false, subtasks: [] }; 
+  const addTask = (text, dueDate, category) => {
+    const newTask = { id: Date.now(), text, dueDate, category, completed: false, subtasks: [] }; 
     setTasks([...tasks, newTask]);
 };
-
 
 const addSubtask = (taskId, subtaskText) => {
   setTasks(tasks.map(task => 
@@ -29,6 +28,15 @@ const toggleTask = (taskId) => {
   ));
 };
 
+const deleteTask = (taskId) => {
+  setTasks(tasks.filter(task => task.id !== taskId));
+};
+
+const editTask = (taskId, newText) => {
+  setTasks(tasks.map(task => 
+      task.id === taskId ? { ...task, text: newText } : task
+  ));
+};
 
   return (
     <div className="App">
@@ -36,7 +44,7 @@ const toggleTask = (taskId) => {
       <SideDrawer />
       <Navbar />
       <AddTask onAddTask={addTask} />
-      <TaskList tasks={tasks} onToggleTask={toggleTask} onAddSubtask={addSubtask} />
+      <TaskList tasks={tasks} onToggleTask={toggleTask} onAddSubtask={addSubtask} onDeleteTask={deleteTask} onEditTask={editTask} />
       </header>
     </div>
   );
